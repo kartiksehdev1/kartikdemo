@@ -1,0 +1,30 @@
+{
+	"name": "lookupdatasetcopyativity",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked dbsqlserver",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBNAME": "Learning"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "foldername",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "adf"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

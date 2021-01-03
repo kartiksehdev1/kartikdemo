@@ -1,0 +1,20 @@
+{
+	"name": "input",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservicecontainer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "data.txt",
+				"folderPath": "data kartik",
+				"container": "containerkartik"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

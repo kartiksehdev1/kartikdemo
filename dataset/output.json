@@ -1,0 +1,20 @@
+{
+	"name": "output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservicecontainer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "data2.txt",
+				"folderPath": "output",
+				"container": "containerkartik"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,27 @@
+{
+	"name": "outputlookcopy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservicecontainer",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"folparam": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@dataset().folparam",
+					"type": "Expression"
+				},
+				"container": "containerkartik"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
