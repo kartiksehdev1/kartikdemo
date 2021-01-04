@@ -1,0 +1,111 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adflearningkartik"
+		},
+		"linked dbsqlserver_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'linked dbsqlserver'"
+		},
+		"linked dbsqlserver_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'linked dbsqlserver'"
+		},
+		"linkedservicecontainer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'linkedservicecontainer'"
+		},
+		"linked dbsqlserver_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Asus"
+		},
+		"event_trigger_parameter_properties_pipeline1_parameters_sourcepath": {
+			"type": "string",
+			"defaultValue": "@triggerBody().filePath"
+		},
+		"event_trigger_parameter_properties_pipeline1_parameters_sourcefile": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"event_trigger_parameter_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/fadc0068-51f6-4619-8d27-83dc73d09921/resourceGroups/AzureLearning/providers/Microsoft.Storage/storageAccounts/storagelearnkartik"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adflearningkartik_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"linkedservicecontainer_connectionString": {
+						"value": "[parameters('linkedservicecontainer_connectionString')]"
+					},
+					"linked dbsqlserver_connectionString": {
+						"value": "[parameters('linked dbsqlserver_connectionString')]"
+					},
+					"linked dbsqlserver_password": {
+						"value": "[parameters('linked dbsqlserver_password')]"
+					},
+					"linked dbsqlserver_properties_typeProperties_userName": {
+						"value": "[parameters('linked dbsqlserver_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adflearningkartik_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"event_trigger_parameter_properties_pipeline1_parameters_sourcepath": {
+						"value": "[parameters('event_trigger_parameter_properties_pipeline1_parameters_sourcepath')]"
+					},
+					"event_trigger_parameter_properties_pipeline1_parameters_sourcefile": {
+						"value": "[parameters('event_trigger_parameter_properties_pipeline1_parameters_sourcefile')]"
+					},
+					"event_trigger_parameter_properties_typeProperties_scope": {
+						"value": "[parameters('event_trigger_parameter_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adflearningkartik_ArmTemplate_0')]"
+			]
+		}
+	]
+}

@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adflearningkartik"
+		},
+		"linked dbsqlserver_connectionString": {
+			"value": ""
+		},
+		"linked dbsqlserver_password": {
+			"value": ""
+		},
+		"linkedservicecontainer_connectionString": {
+			"value": ""
+		},
+		"linked dbsqlserver_properties_typeProperties_userName": {
+			"value": "Asus"
+		},
+		"event_trigger_parameter_properties_pipeline1_parameters_sourcepath": {
+			"value": "@triggerBody().filePath"
+		},
+		"event_trigger_parameter_properties_pipeline1_parameters_sourcefile": {
+			"value": "@triggerBody().fileName"
+		},
+		"event_trigger_parameter_properties_typeProperties_scope": {
+			"value": "/subscriptions/fadc0068-51f6-4619-8d27-83dc73d09921/resourceGroups/AzureLearning/providers/Microsoft.Storage/storageAccounts/storagelearnkartik"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
